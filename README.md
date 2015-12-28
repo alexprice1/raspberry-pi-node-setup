@@ -5,24 +5,26 @@
 1. Insert SD card into raspberrypi
 
 ## Setup Git Remote
-1. Startup raspberrypi, and ssh into it.
-2. Create user
+1) Startup raspberrypi, and ssh into it.
+2) Create user
 ```
 useradd git
 password git
 ```
-3 Login as 'git'
+3) Login as 'git'
 ```
 sudo su - git
 ```
-4. Create git, receive folder
+4) Create git, receive folder
 ```
 mkdir receive.git && cd receive.git && git init --bare
 ```
-5. Create post-receive file
+5) Create post-receive file
 ```
 vi ~/receive.git/hooks/post-receive
+```
 
+```
 #!/bin/sh
 
 # Create cloned folder
@@ -48,7 +50,7 @@ cd ~/source
 NODE_ENV="production" PORT=80 pm2 start server.js
 ```
 
-6. Make file executable
+6) Make file executable
 ```
 chmod 0775 ~/source.git/hooks/post-receive
 ```
