@@ -8,20 +8,22 @@
 1) Startup raspberrypi, and ssh into it.
 2) Create user
 ```
-useradd git
-password git
+useradd git -m
+useradd git root
+passwd git
 ```
 3) Login as 'git'
 ```
 sudo su - git
 ```
-4) Create git, receive folder
+4) Create git, source folder
 ```
-mkdir receive.git && cd receive.git && git init --bare
+cd ~
+mkdir source.git && cd source.git && git init --bare
 ```
 5) Create post-receive file
 ```
-vi ~/receive.git/hooks/post-receive
+vi ~/source.git/hooks/post-receive
 ```
 
 ```
@@ -71,7 +73,7 @@ npm install -g pm2
 
 In your local environment add it as a remote repository
 ```
-git remote add pi git@(ip):receive.git
+git remote add pi git@(ip):source.git
 ```
 
 Then, you can do the normal `git push pi master`
